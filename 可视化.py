@@ -5,11 +5,15 @@ import matplotlib.pyplot as plt
 from matplotlib import font_manager
 
 # ===== 字体设置 =====
-font_path = "NotoSansJP-Regular.ttf"
-jp_font = font_manager.FontProperties(fname=font_path)
+font_path = "NotoSansJP-Regular.ttf"  
 
-plt.rcParams["font.family"] = jp_font.get_name()
+# 把字体文件注册到 matplotlib 的字体管理器中
+font_manager.fontManager.addfont(font_path)
+
+# 这里用字体家族名作为全局字体
+plt.rcParams["font.family"] = "Noto Sans JP"
 plt.rcParams["axes.unicode_minus"] = False
+
 
 # ===== 读取总分析结果 =====
 df = pd.read_csv("analysis_all.csv")
@@ -60,6 +64,7 @@ ax2.set_xticklabels(labels)
 ax2.set_ylim(0, 1)
 
 st.pyplot(fig2)
+
 
 
 
