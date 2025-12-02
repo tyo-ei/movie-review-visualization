@@ -1,10 +1,10 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
 from matplotlib import font_manager
 
-# 载入日文字体
+# ===== 字体设置 =====
 font_path = "NotoSansJP-Regular.ttf"
 jp_font = font_manager.FontProperties(fname=font_path)
 
@@ -35,9 +35,9 @@ st.subheader(f"{selected_movie} の各側面の平均スコア（柱状図）")
 fig1, ax1 = plt.subplots()
 ax1.bar(aspect_mean.index, aspect_mean.values)
 ax1.set_ylim(0, 1)
-ax1.set_ylabel("平均スコア")
-ax1.set_xlabel("側面")
-st.pyplot(fig1)
+ax1.set_ylabel("平均スコア",fontproperties=jp_font)
+ax1.set_xlabel("側面",fontproperties=jp_font)
+ax1.set_xticklabels(aspect_mean.index, fontproperties=jp_font)
 
 # ===== 雷达图 =====
 st.subheader(f"{selected_movie} の各側面のバランス（レーダーチャート）")
@@ -60,4 +60,5 @@ ax2.set_xticklabels(labels)
 ax2.set_ylim(0, 1)
 
 st.pyplot(fig2)
+
 
