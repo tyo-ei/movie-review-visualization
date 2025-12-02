@@ -2,9 +2,13 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib import font_manager
 
-# 解决字体
-plt.rcParams["font.family"] = "MS Gothic"   # 如果报错可以改成 "Yu Gothic" 等
+# 载入日文字体
+font_path = "NotoSansJP-Regular.ttf"
+jp_font = font_manager.FontProperties(fname=font_path)
+
+plt.rcParams["font.family"] = jp_font.get_name()
 plt.rcParams["axes.unicode_minus"] = False
 
 # ===== 读取总分析结果 =====
@@ -56,3 +60,4 @@ ax2.set_xticklabels(labels)
 ax2.set_ylim(0, 1)
 
 st.pyplot(fig2)
+
